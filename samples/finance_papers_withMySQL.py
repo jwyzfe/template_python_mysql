@@ -13,14 +13,25 @@ conn = pymysql.connect(
 try:
     with conn.cursor() as cursor:
         # Read
-        sql = "SELECT * FROM TableName"
+        sql = "SELECT * FROM QUESTION"
         cursor.execute(sql)
         data = cursor.fetchall()
         for row in data:
             print(row)  # 각 행 출력
-            print(f"pk_id: {row['pk_id']}, column1: {row['column1']}, column2: {row['column2']}")
+            print(f"pk_id: {row['QPK_A']}, column1: {row['QUESTION']}, column2: {row['ANSWER']}")
+            
+            
+        sql2 = "SELECT * FROM OPTION_TABLE"
+        cursor.execute(sql2)
+        data2 = cursor.fetchall()
+        for row in data2:
+            print(row)  # 각 행 출력
+            print(f"pk_id: {row['OPK_B']}, column1: {row['OFK_A']}, column2: {row['OPTIONS']}")
 
     
 
 finally:
     conn.close()
+    
+    
+    
